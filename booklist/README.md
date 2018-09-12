@@ -9,3 +9,40 @@
 * we promoted it to a container by importing 'connect' fn, then defined mapStateToProps and we hooked our commponent together with mapStateToProps using the connect fn
 * added <BookList /> to App
 * redux generated a state object that contained our books, then mapped that state as props to our component because the state was updated through our reducer and re-rendered with the list of books
+
+## action creators and dispatch etc
+
+* bindActionCreators with dispatch, going to take all the actions and make sure they get passed on to all the different reducers
+
+```javascript
+  return bindActionCreators({ selectBook: selectBook }, dispatch)
+```
+
+* mapDispatch to props, anything returned from this will end up as __props__ on the BookList container.
+* we are passing an object with key and value 'selectBook'
+* whatever we pass as the first argument is going to be available as props to our container
+* can specifically call this.props.selectBook (the key)
+* __and that will call our action creator__
+
+```javascript
+function mapDispatchToProps (dispatch) {
+  // whenever selectBook is called, the result should be
+  // passed to all of our reducers
+  return bindActionCreators({ selectBook: selectBook }, dispatch)
+}
+```
+
+* mapStateToProps will promote BookList from a component to a container
+* it needs to know about this new dispatch method, selectBook, make it available as a prop
+
+### summary
+
+* want to take some state and map it to the props of our container
+* and want to take the action creator and make it available to be called inside the container as well
+* selectBook is a totally plain fn, returns a plain js object
+* if we just call it, we get the object back inside our component
+* so, the purpose of bindActionCreators and dispatch is specifically to take what gets returned from selectBook and make sure it flows through all the reducers
+
+
+* all reducers get 2 arguments, current state and an action
+* 
