@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// we take the return value from selectBook and make sure it flows through all the reducers
+// we take the return value from selectBook and make sure it flows through all the reducers with bindActionCreators
 import { selectBook } from '../actions/index'
 import { bindActionCreators } from 'redux'
 
+// if we add a click event handler to our li, we can then call the action creator
+// we have already connected the action creator to this container, made it available as a prop, this.props.selectBook
 class BookList extends Component {
   renderList () {
     return this.props.books.map(book => {
@@ -33,6 +35,8 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
   // whenever selectBook is called, the result should be
   // passed to all of our reducers
+  // enables us to call this.props.selectBook, and that
+  // will call our action creator
   return bindActionCreators({ selectBook: selectBook }, dispatch)
 }
 // promote BookList from a component to a container, it needs

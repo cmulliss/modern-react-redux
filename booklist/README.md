@@ -45,4 +45,26 @@ function mapDispatchToProps (dispatch) {
 
 
 * all reducers get 2 arguments, current state and an action
+
+### mini summary
+
+* most generic, want to take some state and map it to the props of our container
+* and want to take an action creator and make it available to be called inside of the container too
+* the action creator, with this bindActionCreators and the dispatch method, the pupose is selectBook is a plain fn, returns a plain js object, if just call it nothing happens, so the purpose of bindActionCreators and dispatch is specifically to take what gets returned from selectBook, and make sure it flows through all the reducers
+
+```javascript
+function mapStateToProps (state) {
+  return {
+    books: state.books
+  }
+}
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators({ selectBook: selectBook }, dispatch)
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BookList)
+```
+
 * 
