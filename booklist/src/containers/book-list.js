@@ -34,7 +34,7 @@ function mapStateToProps (state) {
 // on the BookList container
 function mapDispatchToProps (dispatch) {
   // whenever selectBook is called, the result should be
-  // passed to all of our reducers
+  // passed to all of our reducers, using dispatch
   // enables us to call this.props.selectBook, and that
   // will call our action creator
   return bindActionCreators({ selectBook: selectBook }, dispatch)
@@ -42,16 +42,15 @@ function mapDispatchToProps (dispatch) {
 // promote BookList from a component to a container, it needs
 // to know about this new dispatch method, selectBook.
 // make it available as a prop
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BookList)
 // Anything returned from this function will end up as props
 // on the BookList container
 // function mapDispatchToProps (dispatch) {
 // Whenever selectBook is called, the result shoudl be passed
 // to all of our reducers
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BookList)
 // Promote BookList from a component to a container - it needs to know
 // about this new dispatch method, selectBook. Make it available
 // as a prop.
