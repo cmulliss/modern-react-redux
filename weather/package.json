@@ -1,0 +1,23 @@
+{
+  "name": "weather",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react-dom": "^16.5.1",
+    "react-scripts": "1.1.5",
+    "react-sparklines": "^1.6.0",
+    "redux": "^4.0.0",
+    "redux-promise": "^0.6.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "prettier-eslint": "^8.8.2",
+    "react": "^16.5.1",
+    "react-redux": "^5.0.7"
+  }
+}

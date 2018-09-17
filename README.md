@@ -1,6 +1,6 @@
 # modern-react-redux
 
-npm install prettier-eslint react react-redux --save-dev
+npm install prettier-eslint redux react react-redux --save-dev
 
 # Booklist
 
