@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchWeather } from '../actions/index'
 
 // initial state is an empty string
 export default class SearchBar extends Component {
@@ -6,16 +9,28 @@ export default class SearchBar extends Component {
     super(props)
 
     this.state = { term: '' }
-    // binding the context of onInputChange
+    // binding the context
     this.onInputChange = this.onInputChange.bind(this)
+    this.onFormSubmit = this.onFormSubmit.bind(this)
   }
 
   onInputChange (event) {
     this.setState({ term: event.target.value })
   }
 
+  // we need to fetch the weather data, onSubmit, this
+  // container needs to fire up the action creator,
+  // fetchWeather, and make our api request
+  // need to connect to redux using connect method
+  // also need to bind the action creator, fetchWeather,
+  // as a prop to this container
+  // submitting calls action creator and sets search term
+  // to value entered as new state, via empty string first
   onFormSubmit (event) {
     event.preventDefault()
+    this.props.fetchWeather(this.state.term)
+    // clear after search
+    this.setState({ term: '' })
   }
 
   render () {
