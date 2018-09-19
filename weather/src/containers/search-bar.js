@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+// import action creator
 import { fetchWeather } from '../actions/index'
 
 // initial state is an empty string
@@ -32,7 +33,7 @@ export default class SearchBar extends Component {
     // clear after search
     this.setState({ term: '' })
   }
-
+  // want to call action creator whenever form submitted
   render () {
     return (
       <form onSubmit={this.onFormSubmit} className='input-group'>
@@ -51,6 +52,13 @@ export default class SearchBar extends Component {
     )
   }
 }
+// bindActionCreators with dispatch makes sure the action flows // down into the middleware and then the reducers inside redux
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators({ fetchWeather }, dispatch)
+}
+export default connect(null, mapDispatchToProps)(SearchBar)
+
+// so, by binding the action creator fetchWeather to dispatch and then mapping it to props, that gives us access to the fn, this props.fetchWeather inside our component
 
 // needs to have ability to modify the state of our App
 // by dispatching actions and to call an action creator
