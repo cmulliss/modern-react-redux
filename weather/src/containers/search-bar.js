@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import { fetchWeather } from '../actions/index'
 
 // initial state is an empty string
-export default class SearchBar extends Component {
+class SearchBar extends Component {
   constructor (props) {
     super(props)
 
